@@ -3,9 +3,9 @@ This repository contains base scripts for the P&D ISSP KU Leuven course, 2023 ed
 
 Tutorial:
 
-* Make sure Git is installed on your machine.
-* Clone the repository with `git clone https://github.com/p-didier/pandd2023-base` in the folder of your choice.
-* You are all set! :)
+1. Make sure Git is installed on your machine.
+2. Clone the repository with `git clone https://github.com/p-didier/pandd2023-base` in the folder of your choice.
+3. All set! :)
 
 Repository structure:
 
