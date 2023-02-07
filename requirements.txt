@@ -1,0 +1,29 @@
+certifi @ file:///C:/b/abs_85o_6fm0se/croot/certifi_1671487778835/work/certifi
+contourpy==1.0.7
+cycler==0.11.0
+Cython==0.29.33
+docopt==0.6.2
+fonttools==4.38.0
+gitdb==4.0.9
+GitPython==3.1.27
+jsonpickle==1.5.2
+kiwisolver==1.4.4
+lazy-dataset @ git+https://github.com/fgnt/lazy_dataset.git@ce8a833221580242e69d43e62361adca02478f79
+matplotlib==3.6.3
+munch==2.5.0
+numpy==1.24.2
+packaging==23.0
+paderbox @ git+https://github.com/fgnt/paderbox.git@7fed5b44be2effcedb7a26778ada6c5668b1d6bd
+-e git+https://github.com/fgnt/paderwasn.git@ff88f73a51228bb2cb4372f7595169dd716f4f2f#egg=paderwasn
+Pillow==9.4.0
+py-cpuinfo==8.0.0
+pybind11==2.10.3
+pyparsing==3.0.9
+pyroomacoustics==0.7.3
+PySimpleGUI==4.60.4
+python-dateutil==2.8.2
+sacred==0.8.2
+scipy==1.10.0
+six==1.16.0
+smmap==5.0.0
+wincertstore==0.2
