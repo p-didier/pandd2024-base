@@ -84,14 +84,14 @@ def oracle_choice_doa(DOAestimates, asc: RIRg_GUI):
 
     oracleDOAtalkers = np.zeros(len(coordinatesTalkers))
     for ii in range(len(coordinatesTalkers)):
-        oracleDOAtalkers[ii] = np.arccos(
+        oracleDOAtalkers[ii] = np.arcsin(
             (coordinatesMicArray[0] - coordinatesTalkers[ii][0]) /\
             np.linalg.norm(coordinatesMicArray - coordinatesTalkers[ii])
         )
 
     oracleDOAnoises = np.zeros(len(coordinatesNoises))
     for ii in range(len(coordinatesNoises)):
-        oracleDOAnoises[ii] = np.arccos(
+        oracleDOAnoises[ii] = np.arcsin(
             (coordinatesMicArray[0] - coordinatesNoises[ii][0]) /\
             np.linalg.norm(coordinatesMicArray - coordinatesNoises[ii])
         )
@@ -102,7 +102,7 @@ def oracle_choice_doa(DOAestimates, asc: RIRg_GUI):
             (np.abs(DOAestimates - oracleDOAtalkers[ii])).argmin()
         ]
 
-    return chosenDOAs
+    return chosenDOAs, oracleDOAtalkers
 
 
 def listen_to_array(audio_array, fs):
