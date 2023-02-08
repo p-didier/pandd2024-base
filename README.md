@@ -9,7 +9,7 @@ Set things up:
 4. In Visual Studio Code, select the appropriate Python environment.
 5. Open a command line prompt (in Visual Studio Code or by typing `cmd` in the Windows search bar).  
 6. Set the current directory to the folder where you cloned the repository (with the command `cd`).
-7. Run the following to install the necessary Python packages: `pip install -r requirements.txt`.
+7. Run the following in the prompt to install necessary Python packages: `pip install -r requirements.txt`.
 8. All set! :-)
 
 Repository structure:
