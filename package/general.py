@@ -2,6 +2,7 @@ import numpy as np
 from pathlib import Path
 import matplotlib.pyplot as plt
 from package.gui_utils import RIRg_GUI
+import simpleaudio as sa
 
 
 def check_plot_tdoas(doaEstTarget, doaEstAll, asc: RIRg_GUI):
@@ -102,3 +103,10 @@ def oracle_choice_doa(DOAestimates, asc: RIRg_GUI):
         ]
 
     return chosenDOAs
+
+
+def listen_to_array(audio_array, fs):
+    """Plays back a sounds from an array."""
+    audio_array *= 32767 / max(abs(audio_array))
+    audio_array = audio_array.astype(np.int16)
+    sa.play_buffer(audio_array,1,2,fs)

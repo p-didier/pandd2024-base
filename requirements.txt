@@ -26,6 +26,7 @@ PySimpleGUI==4.60.4
 python-dateutil==2.8.2
 sacred==0.8.2
 scipy==1.10.0
+simpleaudio==1.0.4
 six==1.16.0
 smmap==5.0.0
 soundfile==0.11.0
