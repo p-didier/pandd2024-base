@@ -1,4 +1,5 @@
 certifi @ file:///C:/b/abs_85o_6fm0se/croot/certifi_1671487778835/work/certifi
+cffi==1.15.1
 contourpy==1.0.7
 cycler==0.11.0
 Cython==0.29.33
@@ -18,6 +19,7 @@ paderbox @ git+https://github.com/fgnt/paderbox.git@7fed5b44be2effcedb7a26778ada
 Pillow==9.4.0
 py-cpuinfo==8.0.0
 pybind11==2.10.3
+pycparser==2.21
 pyparsing==3.0.9
 pyroomacoustics==0.7.3
 PySimpleGUI==4.60.4
@@ -26,4 +28,5 @@ sacred==0.8.2
 scipy==1.10.0
 six==1.16.0
 smmap==5.0.0
+soundfile==0.11.0
 wincertstore==0.2
