@@ -42,7 +42,10 @@ class RIRg_GUI:
         self.roomDim = roomDim
         self.t60 = t60
         self.rirLength = rirLength
-        self.fs = fs
+        if int(fs) < 8000:
+            print(f'/!\ /!\ /!\ The desired sampling frequency ({int(fs)} Hz) is too low. Setting fs = 8 kHz.')
+            fs = 8000
+        self.fs = int(fs)
         self.exportFolder = exportFolder
         self.outputRIRplot = outputRIRplot
 
