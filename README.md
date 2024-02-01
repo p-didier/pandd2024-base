@@ -1,5 +1,5 @@
-# P&D ISSP 2023 base scripts
-This repository contains base scripts for the P&D ISSP KU Leuven course, 2023 edition.
+# P&D ISSP 2024 base scripts
+This repository contains base scripts for the P&D ISSP KU Leuven course, 2024 edition.
 
 Set things up:
 
