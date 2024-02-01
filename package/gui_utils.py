@@ -82,7 +82,7 @@ class RIRg_GUI:
         self.micsIds = []
         self.audioIds = []
         self.noiseIds = []
-        self.micsCoords = []
+        self.micCoords = []
         self.audioCoords = []
         self.noiseCoords = []
         self.lineIds = []
@@ -150,7 +150,7 @@ class RIRg_GUI:
                                 # Store coordinates for RIRs computation
                                 coords = list(np.array(canvasCoords) /\
                                     np.array(graph.CanvasSize) * self.roomDim)
-                                self.micsCoords.append(coords)
+                                self.micCoords.append(coords)
                     else:
                         id = graph.draw_circle(
                             values['-GRAPH-'],
@@ -224,7 +224,7 @@ class RIRg_GUI:
                     window['-FS CHOICE-'].Update(DEFAULT_FS)
             elif event == '-COMPUTE RIRS-':
                 # Check for invalid inputs first
-                if len(self.micsCoords) == 0:
+                if len(self.micCoords) == 0:
                     print('WARNING: no microphone array defined. Cannot compute RIRs.')
                 elif len(self.audioCoords) == 0 and len(self.noiseCoords) == 0:
                     print('WARNING: no source defined. Cannot compute RIRs.')
@@ -234,14 +234,14 @@ class RIRg_GUI:
                     # ===================================
                     # If all good, compute and store RIRs
                     # ===================================
-                    if len(self.micsCoords) > 0:
+                    if len(self.micCoords) > 0:
                         if len(self.audioCoords) == 0 and\
                             len(self.noiseCoords) == 0:
                             print('No sound source present. Please place audio and/or noise source(s) and try again.')
                         else:
                             fname = f'{self.exportFolder}/rirs_{get_datetime()}'
                             self.RIRsAudio, self.RIRsNoise = compute_rirs(
-                                micPos=np.array(self.micsCoords),
+                                micPos=np.array(self.micCoords),
                                 audioPos=np.array(self.audioCoords),
                                 noisePos=np.array(self.noiseCoords),
                                 roomDim=self.roomDim,
@@ -356,10 +356,10 @@ class RIRg_GUI:
         self.noiseIds = newIds
         # Update mic points
         newCoords, newIds = _update_points(
-            self.micsCoords,
+            self.micCoords,
             GRAPHELEMENTSCOLORS[2]
         )
-        self.micsCoords = newCoords
+        self.micCoords = newCoords
         self.micsIds = newIds
 
         # Add grid
@@ -442,10 +442,10 @@ class RIRg_GUI:
                 s=f'n{ii+1}',
                 color='k'
             )
-        for ii in range(len(self.micsCoords)):
+        for ii in range(len(self.micCoords)):
             axes.scatter(
-                x=self.micsCoords[ii][0],
-                y=self.micsCoords[ii][1],
+                x=self.micCoords[ii][0],
+                y=self.micCoords[ii][1],
                 color='b',
                 marker='o'
             )
@@ -504,7 +504,7 @@ class RIRg_GUI:
         self.micsIds = newIds
         # Update coordinates
         self.audioCoords = layout.audioCoords
-        self.micsCoords = layout.micsCoords
+        self.micCoords = layout.micsCoords
         self.noiseCoords = layout.noiseCoords
 
         return None

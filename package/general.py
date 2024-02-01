@@ -38,7 +38,7 @@ def check_plot_tdoas(doaEstTarget, doaEstAll, asc: RIRg_GUI):
     for ii in range(len(doaEstAll)):
         x, y = _get_line(
             doaRadiants=doaEstAll[ii] + np.pi / 2,  # align to space orientation
-            startCoords=np.mean(asc.micsCoords, axis=0),
+            startCoords=np.mean(asc.micCoords, axis=0),
             roomDim=asc.roomDim
         )
         if doaEstAll[ii] in doaEstTarget:
@@ -81,7 +81,7 @@ def oracle_choice_doa(DOAestimates, asc: RIRg_GUI):
 
     coordinatesTalkers = asc.audioCoords
     coordinatesNoises = asc.noiseCoords
-    coordinatesMicArray = np.mean(np.array(asc.micsCoords), axis=0)
+    coordinatesMicArray = np.mean(np.array(asc.micCoords), axis=0)
 
     oracleDOAtalkers = np.zeros(len(coordinatesTalkers))
     for ii in range(len(coordinatesTalkers)):

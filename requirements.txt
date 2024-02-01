@@ -11,6 +11,7 @@ executing==1.2.0
 fonttools==4.38.0
 gitdb==4.0.9
 GitPython==3.1.27
+ipykernel==6.29.0
 ipython==8.9.0
 jedi==0.18.2
 jsonpickle==1.5.2
