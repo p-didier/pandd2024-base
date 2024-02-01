@@ -869,7 +869,7 @@ def get_datetime():
     else:
         second = now.second
     date = f'{now.year}{month}{day}'
-    time = f'{hour}h{minute}m{second}s'
+    time = f'{hour}{minute}{second}'
 
     return date + '_' + time
 
