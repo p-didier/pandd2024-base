@@ -256,6 +256,7 @@ class RIRg_GUI:
                             fullFname = fname + '.pkl.gz'
                             pickle.dump(self, gzip.open(fullFname, 'wb'))
                             print(f'RIRs saved in file: "{Path(fullFname).name}", in folder\n"{Path(fullFname).parent}"')
+                            print('You may close the GUI if not needed anymore!')
                     else:
                         print('No microphones are present. Please place microphones and try again.')
                     # ===================================
