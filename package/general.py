@@ -71,12 +71,11 @@ def select_latest_rir(path):
     return rirFile
 
 
-
-def oracle_choice_doa(DOAestimates, asc: RIRg_GUI):
+def auto_choice_doa(doaEsts, asc: RIRg_GUI):
     """
-    Select the DOA(s) corresponding to the target speaker(s) among all
-    estimate DOAs containted in `DOAestimates`, based the information contained
-    in the RIR-GUI output object `asc`.
+    Automatically selects the DOA(s) corresponding to the target speaker(s)
+    among all estimated DOAs contained in `doaEsts`, based the information
+    contained in the RIR-GUI output object `asc`.
     """
 
     coordinatesTalkers = asc.audioCoords
@@ -99,8 +98,8 @@ def oracle_choice_doa(DOAestimates, asc: RIRg_GUI):
 
     chosenDOAs = np.zeros_like(oracleDOAtalkers)
     for ii in range(len(oracleDOAtalkers)):
-        chosenDOAs[ii] = DOAestimates[
-            (np.abs(DOAestimates - oracleDOAtalkers[ii])).argmin()
+        chosenDOAs[ii] = doaEsts[
+            (np.abs(doaEsts - oracleDOAtalkers[ii])).argmin()
         ]
 
     return chosenDOAs, oracleDOAtalkers
