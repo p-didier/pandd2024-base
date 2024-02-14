@@ -21,3 +21,6 @@ Repository structure:
 * `./sound_files/`: folder containing provided sound files to conduct your tests.
 * `./notebook_skeleton.ipynb`: skeleton notebook to start your work from.
 * `./requirements.txt`: package requirements file.
+
+### Troubleshooting
+* The package `pyroomacoustics` is needed for room impulse response generation. It it an efficient library that relies on C++ internal code. For that, you will need your computer to be able to compile C++ code. This is automatically included in the latest versions of VS Code. Alternatively, you may obtain the required libraries via the [Microsoft Visual Studio website](https://visualstudio.microsoft.com/de/downloads/). 
