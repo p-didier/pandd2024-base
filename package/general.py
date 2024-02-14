@@ -2,8 +2,6 @@ import numpy as np
 from pathlib import Path
 import matplotlib.pyplot as plt
 from package.gui_utils import RIRg_GUI
-import simpleaudio as sa
-
 
 def check_plot_tdoas(doaEstTarget, doaEstAll, asc: RIRg_GUI):
     """
@@ -103,31 +101,3 @@ def auto_choice_doa(doaEsts, asc: RIRg_GUI):
         ]
 
     return chosenDOAs, oracleDOAtalkers
-
-
-def listen_to_array(audioArray: np.ndarray, fs):
-    """Plays back a sounds from an array."""
-    # Ensure correct input type and orientation
-    if isinstance(audioArray, list):
-        audioArray = np.array(audioArray)
-    if len(audioArray.squeeze().shape) > 2:
-        raise ValueError(f'The provided audio array has too many dimensions (shape: {audioArray.shape}).')
-    elif len(audioArray.shape) == 2:  # stereo
-        if audioArray.shape[0] < audioArray.shape[1]:
-            audioArray = audioArray.T  # transpose if needed
-        nChannels = 2
-    else:  # mono
-        nChannels = 1
-
-    # Prep for playing
-    audioArray *= 32767 / np.amax(abs(audioArray), axis=0)
-    audioArray = audioArray.astype(np.int16)
-
-    # Play until done
-    playObj = sa.play_buffer(
-        audio_data=audioArray,
-        num_channels=nChannels,
-        bytes_per_sample=2,
-        sample_rate=fs
-    )
-    playObj.wait_done()
