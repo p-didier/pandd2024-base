@@ -21,17 +21,17 @@ DEFAULT_FS = 44100
 class RIRg_GUI:
 
     def __init__(
-        self,
-        theme='DarkAmber',
-        c=340,
-        nMicsPerArray=DEFAULT_NMICSPERARRAY,
-        distBwMics=DEFAULT_DBWMICS,
-        roomDim=DEFAULT_ROOMDIM,
-        t60=DEFAULT_T60,
-        rirLength=DEFAULT_RIRLENGTH,
-        fs=DEFAULT_FS,
-        exportFolder=os.getcwd(),
-        outputRIRplot=False
+            self,
+            theme='DarkAmber',
+            c=340,
+            nMicsPerArray=DEFAULT_NMICSPERARRAY,
+            distBwMics=DEFAULT_DBWMICS,
+            roomDim=DEFAULT_ROOMDIM,
+            t60=DEFAULT_T60,
+            rirLength=DEFAULT_RIRLENGTH,
+            fs=DEFAULT_FS,
+            exportFolder=os.getcwd(),
+            outputRIRplot=False
         ) -> None:
 
         # Defaults
@@ -252,11 +252,14 @@ class RIRg_GUI:
                                 fname=fname,
                                 c=self.c,
                             )
-                            print('RIRs computed successfully. Saving as Pickle archive.')
-                            fullFname = fname + '.pkl.gz'
-                            pickle.dump(self, gzip.open(fullFname, 'wb'))
-                            print(f'RIRs saved in file: "{Path(fullFname).name}", in folder\n"{Path(fullFname).parent}"')
-                            print('You may close the GUI if not needed anymore!')
+                            if self.RIRsAudio is not None and self.RIRsNoise is not None:
+                                print('RIRs computed successfully. Saving as Pickle archive.')
+                                fullFname = fname + '.pkl.gz'
+                                pickle.dump(self, gzip.open(fullFname, 'wb'))
+                                print(f'RIRs saved in file: "{Path(fullFname).name}", in folder\n"{Path(fullFname).parent}"')
+                                print('You may close the GUI if not needed anymore!')
+                            else:
+                                print('RIRs computation failed. Please try again.')
                     else:
                         print('No microphones are present. Please place microphones and try again.')
                     # ===================================
@@ -618,16 +621,16 @@ class RIRg_GUI:
 
 
 def compute_rirs(
-    micPos,
-    audioPos,
-    noisePos,
-    roomDim,
-    t60,
-    fsRIR,
-    rirLength=None,
-    outputRIRplot=False,
-    fname='',
-    c=340
+        micPos,
+        audioPos,
+        noisePos,
+        roomDim,
+        t60,
+        fsRIR,
+        rirLength=None,
+        outputRIRplot=False,
+        fname='',
+        c=340
     ):
     """
     Computes RIRs based on MATLAB function from the KUL course "P&D ISSP 2022"
@@ -706,7 +709,12 @@ def compute_rirs(
         max_order = 0
         e_absorption = 0.5  # <-- arbitrary (unused)
     else:
-        e_absorption, max_order = pra.inverse_sabine(t60, rd, c)
+        try:
+            e_absorption, max_order = pra.inverse_sabine(t60, rd, c)
+        except ValueError as err:
+            print(f'/!\ /!\ PyRoomAcoustics failed to compute the RIRs. Error message:\n"{err}"')
+            print('\nLarge room with small T60 do not work well together (too unrealistic).')
+            return None, None
     # Create source list
     if nAudio > 0 and nNoise > 0:
         sources =\
